@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background-color: #d2d2d2;
+}
+
+.signature-container {
+	width: 100vw;
+    background-color: #cde;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.signature-pad {
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    cursor: crosshair;
+}
+
+svg {
+    display: block;
+}
+
+.controls button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+}
+
+#clear-btn {
+    background-color: #e74c3c;
+    margin-right: 10px;
+}
+
+#save-btn {
+    background-color: #2ecc71;
+}
+
+path {
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}

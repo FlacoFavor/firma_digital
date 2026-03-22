@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firmar SVG</title>
+	<link rel="icon" type="image/svg+xml" href="icono.svg">
+	<link rel="manifest" href="manifest.json">
+	<link rel="stylesheet" href="estilos.css">
+	<script src="script.js"></script>
+</head>
+<body>
+
+    <div class="signature-container">
+        <h1>Firma Digital</h1>
+        <div id="svg-canvas" class="signature-pad">
+            <svg id="svg-signature" xmlns="http://www.w3.org/2000/svg" width="90vw" height="45vw" stroke="#000" stroke-width="2" fill="none"></svg>
+        </div>
+        <div class="controls">
+            <button id="clear-btn">Limpiar</button>
+            <button id="save-btn">Guardar</button>
+        </div>
+    </div>
+</body>
+</html>
