@@ -53,3 +53,44 @@ path {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+#update-banner {
+    display: none; /* Se activa con JS */
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #333;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    font-family: sans-serif;
+    z-index: 10000;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #444;
+}
+
+#update-banner.show {
+    display: flex; /* Cambiamos a flex para alinear texto y botón */
+    animation: slideUp 0.4s ease-out;
+}
+
+#update-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+#update-btn:hover {
+    background-color: #0056b3;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

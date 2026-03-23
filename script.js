@@ -119,12 +119,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 */
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('Service Worker registrado con éxito', reg))
-      .catch(err => console.warn('Error al registrar el Service Worker', err));
-  });
-};
+	let newWorker;
+
+	if ('serviceWorker' in navigator) {
+	  window.addEventListener('load', () => {
+		navigator.serviceWorker.register('./sw.js').then(reg => {
+			console.log('Service Worker registrado:', reg.scope);
+			reg.update();
+		  // Detecta si hay un SW esperando (por ejemplo, si el usuario cerró y abrió la web)
+		  if (reg.waiting) {
+			newWorker = reg.waiting;
+			showUpdateBanner();
+		  }
+
+		  reg.addEventListener('updatefound', () => {
+			newWorker = reg.installing;
+			newWorker.addEventListener('statechange', () => {
+			  // Si el SW terminó de instalarse y hay uno previo controlando la página  
+			  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+				showUpdateBanner();
+			  }
+			});
+		  });
+		}).catch(err => console.error('Error al registrar el Service Worker:', err));
+	  });
+
+
+
+	  // Escucha cuando el nuevo SW toma el mando y recarga
+		let refreshing = false;
+		navigator.serviceWorker.addEventListener('controllerchange', () => {
+		  if (refreshing) return;
+		  refreshing = true;
+		  window.location.reload();
+		});
+	};
+
+	function showUpdateBanner() {
+	  const banner = document.getElementById('update-banner');
+	  if (banner) banner.classList.add('show');
+	}
+
+	// Evento para el botón del banner
+	document.getElementById('update-btn')?.addEventListener('click', () => {
+	  if (newWorker) {
+		newWorker.postMessage({ action: 'skipWaiting' });
+	  }
+	});
 
 });
