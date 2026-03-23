@@ -1,11 +1,12 @@
-const CACHE_NAME = 'firma-app-v2'; // <--- Recuerda subir la versión aquí cuando cambies algo
+const CACHE_NAME = 'firma-app-v2.1'; // <--- Recuerda subir la versión aquí cuando cambies algo
 const ASSETS = [
   './',
   './index.html',
   './estilos.css',
   './script.js',
   './manifest.json',
-  './icono.svg'
+  './icono.svg',
+  './jb.svg'
 ];
 
 // 1. Instalación: Solo guarda en caché. 
